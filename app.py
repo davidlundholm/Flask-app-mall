@@ -5,18 +5,11 @@ from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from functools import wraps
 
-app = Flask(__name__)
-
-# Config MySQL
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'password'
-app.config['MYSQL_DB'] = 'myflaskapp'
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-app.config['MYSQL_PORT'] = 3300
+# Local imports.
+from app_config import *
 
 # init MYSQL
-mysql = MySQL(app)
+mysql = MySQL(get_app_config())
 
 #Articles = Articles()
 
