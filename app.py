@@ -9,7 +9,8 @@ from functools import wraps
 from app_config import *
 
 # init MYSQL
-mysql = MySQL(get_app_config())
+app = get_app_config()
+mysql = MySQL(app)
 
 #Articles = Articles()
 
