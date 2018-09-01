@@ -6,6 +6,7 @@ from functools import wraps
 
 # Local imports.
 from forms import RegisterForm 
+from models import Example
 
 # Init
 app = Flask(__name__)
@@ -13,14 +14,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/myflask
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-class Example(db.Model):
-    __tablename__ = 'example'
-    id = Column('id', Integer, primary_key=True)
-    data = Column('data', Unicode)
 
-    def __init__(self, id, data):
-        self.id = id
-        self.data = data
 
 new_ex = Example(1, 'first')
 db.session.add(new_ex)
