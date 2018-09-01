@@ -4,16 +4,15 @@ from flask_sqlalchemy import SQLAlchemy
 from passlib.hash import sha256_crypt
 from functools import wraps
 
-# Local imports.
-from forms import RegisterForm 
-from models import Example
-
 # Init
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/myflaskapp'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+# Local imports.
+from forms import RegisterForm 
+from models import Example
 
 
 new_ex = Example(1, 'first')
