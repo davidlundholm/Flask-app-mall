@@ -1,16 +1,19 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging
-from forms import RegisterForm 
-from flask_mysqldb import MySQL
 from passlib.hash import sha256_crypt
 from functools import wraps
 
 # Local imports.
-from app_config import *
+from get_db import get_db
+from models import Example
+from forms import RegisterForm 
 
-# init MYSQL
-app = get_app_config()
+# Init
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/myflaskapp'
+db = SQLAlchemy(app)
 
-#Articles = Articles()
+new_ex = Example(1, 'first')
+db.session.add(new_ex)
 
 # Index
 @app.route('/')
@@ -27,8 +30,7 @@ def register():
         username = form.username.data
         password = sha256_crypt.encrypt(str(form.password.data))
 
-        # Create cursor
-        cur = mysql.connection.cursor()
+        
 
         # Execute query
         cur.execute("INSERT INTO users(name, email, username, password) VALUES(%s, %s, %s, %s)", (name, email, username, password))
