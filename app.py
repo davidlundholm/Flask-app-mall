@@ -17,16 +17,19 @@ db = SQLAlchemy(app)
 
 class Example(db.Model):
     __tablename__ = 'example'
-    id = Column('id', Integer, primary_key=True)
-    data = Column('data', Unicode)
+    id = db.Column('id', db.Integer, primary_key=True)
+    data = db.Column('data', db.Unicode)
 
     def __init__(self, id, data):
         self.id = id
         self.data = data
 
-new_ex = Example(1, 'first')
-db.session.add(new_ex)
-db.session.commit()
+def add_examples():
+    new_ex = Example(1, 'first')
+    new_ex2 = Example(2, 'second')
+    db.session.add(new_ex)
+    db.session.add(new_ex2)
+    db.session.commit()
 
 # Index
 @app.route('/')
