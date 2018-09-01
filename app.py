@@ -1,9 +1,9 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging
+from flask_sqlalchemy import SQLAlchemy
 from passlib.hash import sha256_crypt
 from functools import wraps
 
 # Local imports.
-from get_db import get_db
 from models import Example
 from forms import RegisterForm 
 
