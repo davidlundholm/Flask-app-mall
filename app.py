@@ -40,16 +40,6 @@ def register():
         username = form.username.data
         password = sha256_crypt.encrypt(str(form.password.data))
 
-        
-
-        # Execute query
-        cur.execute("INSERT INTO users(name, email, username, password) VALUES(%s, %s, %s, %s)", (name, email, username, password))
-
-        # Commit to DB
-        mysql.connection.commit()
-
-        # Close connection
-        cur.close()
 
         flash('You are now registered and can log in', 'success')
 
@@ -65,11 +55,6 @@ def login():
         username = request.form['username']
         password_candidate = request.form['password']
 
-        # Create cursor
-        cur = mysql.connection.cursor()
-
-        # Get user by username
-        result = cur.execute("SELECT * FROM users WHERE username = %s", [username])
 
         if result > 0:
             # Get stored hash
@@ -118,13 +103,6 @@ def logout():
 @app.route('/dashboard')
 @is_logged_in
 def dashboard():
-    # Create cursor
-    cur = mysql.connection.cursor()
-
-    # Get articles
-    result = cur.execute("SELECT * FROM articles")
-
-    articles = cur.fetchall()
 
     if result > 0:
         return render_template('dashboard.html', articles=articles)
