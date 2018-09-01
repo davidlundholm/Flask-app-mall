@@ -1,16 +1,26 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging
+from sqlalchemy import Column, Integer, Unicode
 from flask_sqlalchemy import SQLAlchemy
 from passlib.hash import sha256_crypt
 from functools import wraps
 
 # Local imports.
-from models import Example
 from forms import RegisterForm 
 
 # Init
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/myflaskapp'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
+class Example(db.Model):
+    __tablename__ = 'example'
+    id = Column('id', Integer, primary_key=True)
+    data = Column('data', Unicode)
+
+    def __init__(self, id, data):
+        self.id = id
+        self.data = data
 
 new_ex = Example(1, 'first')
 db.session.add(new_ex)
