@@ -24,6 +24,7 @@ class Example(db.Model):
 
 new_ex = Example(1, 'first')
 db.session.add(new_ex)
+db.session.commit()
 
 # Index
 @app.route('/')
