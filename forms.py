@@ -1,12 +1,8 @@
-from wtforms import Form, StringField, TextAreaField, PasswordField, validators
+from wtforms import Form, StringField, TextAreaField, PasswordField, validators, IntegerField
 
-# Register Form Class
-class RegisterForm(Form):
-    name = StringField('Name', [validators.Length(min=1, max=50)])
-    username = StringField('Username', [validators.Length(min=4, max=25)])
-    email = StringField('Email', [validators.Length(min=6, max=50)])
-    password = PasswordField('Password', [
-        validators.DataRequired(),
-        validators.EqualTo('confirm', message='Passwords do not match')
-    ])
-    confirm = PasswordField('Confirm Password')
+class examForm(Form):
+    course = StringField('Kursnamn', [validators.Length(min=2, max=50)])
+    #course_code = StringField('Kurskod', [validators.Length(min=2, max=20)])
+    #university = StringField('Universitet', [validators.Length(min=2, max=50)])
+    #semester = StringField('Termin', [validators.Length(min=2, max=10)])
+    #questions = IntegerField('Antal Frågor', [validators.Required()])
