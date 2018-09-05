@@ -6,6 +6,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost:3300/myflaskapp'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
+db.create_all()
 
 @app.route('/')
 def index():
@@ -20,11 +21,12 @@ def add_exam():
     form = examForm(request.form)
 
     if request.method == 'POST' and form.validate():
-        course = examForm.course.data
-        #course_code = examForm.course_code.data
-        #university = examForm.university.data
-        #semester = examForm.semester.data
-        # #amountOfQuestions = examForm.questions.data
+        course = form.course.data
+        course_code = examForm.course_code.data
+        university = examForm.university.data
+        semester = examForm.semester.data
+        amountOfQuestions = examForm.questions.data
+
         ex = Exam(name = course)
         db.session.add(ex)
         db.session.commit()

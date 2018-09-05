@@ -5,10 +5,19 @@
   {% from "includes/_formhelpers.html" import render_field %}
   <form method="POST" action="">
     <div class="form-group">
-      {{ render_field(examForm.title, class_="form-control") }}
+      {{ render_field(examForm.course, class_="form-control") }}
     </div>
     <div class="form-group">
-      {{ render_field(examForm.body, class_="form-control", id="editor") }}
+      {{ render_field(examForm.course_code, class_="form-control") }}
+    </div>
+    <div class="form-group">
+      {{ render_field(examForm.university, class_="form-control") }}
+    </div>
+    <div class="form-group">
+      {{ render_field(examForm.semester, class_="form-control") }}
+    </div>
+    <div class="form-group">
+      {{ render_field(examForm.questions, class_="form-control") }}
     </div>
     <p><input class="btn btn-primary" type="submit" value="Submit">
   </form>
