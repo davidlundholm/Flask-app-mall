@@ -5,7 +5,7 @@
   {% from "includes/_formhelpers.html" import render_field %}
   <form method="POST" action="">
     <div class="form-group">
-      {{ render_field(examForm.course, class_="form-control") }}
+      {{ render_field(examForm.course_name, class_="form-control") }}
     </div>
     <div class="form-group">
       {{ render_field(examForm.course_code, class_="form-control") }}
@@ -19,6 +19,6 @@
     <div class="form-group">
       {{ render_field(examForm.questions, class_="form-control") }}
     </div>
-    <p><input class="btn btn-primary" type="submit" value="Submit">
+    <p><input class="btn btn-primary" type="submit" value="Submit"></p>
   </form>
 {% endblock %}

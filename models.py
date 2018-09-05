@@ -18,7 +18,7 @@ class Exam(db.Model):
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(300), unique=True, nullable=False)
-    answers = db.relationship('Answer', backref='question', lazy=True)
+    answers = db.relationship('Answer', backref='question')
     exam_id = db.Column(db.Integer, db.ForeignKey('exam.id'))
 
 class Answer(db.Model):
@@ -26,3 +26,4 @@ class Answer(db.Model):
     text = db.Column(db.String(300), unique=True, nullable=False)
     correct = db.Column(db.Boolean, default=False)
     question_id = db.Column(db.Integer, db.ForeignKey('question.id'))
+
