@@ -1,9 +1,12 @@
+# Python imports.
 from sqlalchemy import Integer, String, Column, Boolean
 from flask_sqlalchemy import SQLAlchemy
 
-
+# Values.
 db = SQLAlchemy()
 
+# Models.
+# Exam.
 class Exam(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     course_name = db.Column(db.String(80), nullable=False)
@@ -15,12 +18,14 @@ class Exam(db.Model):
     def __repr__(self):
         return '<ID: %r, Kurs: %r, Kurskod: %r>' % (self.id, self.name, self.course_code)
 
+# Question.
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(300), unique=True, nullable=False)
     answers = db.relationship('Answer', backref='question')
     exam_id = db.Column(db.Integer, db.ForeignKey('exam.id'))
 
+# Answer.
 class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(300), unique=True, nullable=False)
