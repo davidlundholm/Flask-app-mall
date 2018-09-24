@@ -20,6 +20,11 @@ with app.app_context():
     db.init_app(app)
     db.create_all()
 
+def debug():
+    with app.app_context():
+        db.init_app(app)
+        db.create_all()
+    
 # Main start.
 if __name__ == '__main__':
     app.run(debug = True)

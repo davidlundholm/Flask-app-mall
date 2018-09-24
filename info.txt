@@ -1,0 +1,14 @@
+//LINUX
+Dependencies (pip installs p2)
+-----------------------------
+Flask - webframework
+SQLAlchemy 
+Flask-SQLAlchemy
+wtforms
+mysql-python
+passlib - password encryption
+
+Enviroment
+-----------------------------
+virtualenv venv
+. venv/bin/activate
