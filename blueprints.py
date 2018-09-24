@@ -1,6 +1,17 @@
 # coding: utf-8
 # Python imports.
+<<<<<<< HEAD
 from flask import Flask, flash, Blueprint, render_template, request, redirect, url_for, session
+=======
+<<<<<<< HEAD
+from flask import Flask, Blueprint, render_template, request, flash
+=======
+<<<<<<< HEAD
+from flask import Flask, Blueprint, render_template, request, redirect
+=======
+from flask import Flask, Blueprint, render_template, request
+>>>>>>> 08e95f69513213f09e1e09335c0bfc4805e68b94
+>>>>>>> 6e2ffa9b39098da2df274e13dd5b27000a95da94
 from passlib.hash import sha256_crypt
 # Local imports.
 from forms import *

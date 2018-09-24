@@ -38,3 +38,6 @@ class User(db.Model):
     username = db.Column(db.String(300), unique=True, nullable=False)
     email = db.Column(db.String(300), unique=True, nullable=False)
     password = db.Column(db.String(300), unique=True, nullable=False)
+
+    def check_password(check_password):
+        return 
