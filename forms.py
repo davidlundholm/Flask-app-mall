@@ -2,6 +2,9 @@
 # Python imports.
 from wtforms import Form, BooleanField, StringField, TextAreaField, PasswordField, validators, IntegerField
 
+# Local imports.
+from app import login
+
 # Forms.
 # Examform.
 class examForm(Form):
@@ -22,3 +25,8 @@ class registerForm(Form):
     confirm_password = PasswordField('Repeat Password')
     accept_tos = BooleanField('I accept the Terms of Service and Privacy Notice (updated Jan 22, 2015)', [validators.Required()])
     
+# Loginform.
+class loginForm(Form):
+    username = StringField('Username', [validators.Length(min=4, max=20)])
+    password = PasswordField('New Password', [validators.Length(min=4, max=50)])
+    remember_me = BooleanField('Remember me?', [validators.Required()])
