@@ -1,10 +1,15 @@
 # coding: utf-8
 # Python imports.
+<<<<<<< HEAD
 from flask import Flask, Blueprint, render_template, request, redirect
+=======
+from flask import Flask, Blueprint, render_template, request
+from passlib.hash import sha256_crypt
+>>>>>>> 1cdd236f37336709cee5a26c77f03619f2551da0
 
 # Local imports.
-from forms import examForm
-from models import Exam, Question, Answer
+from forms import *
+from models import *
 from models import db
 
 # Values.
@@ -22,6 +27,11 @@ def exam():
     return render_template('home.html')
 
 # Functions.
+# Adding values to database.
+def add_to_database(table_data):
+    # Check for model, add data to object, save to database.
+    pass
+
 # Add exam.
 @urls_blueprint.route('/add_exam', methods=['GET','POST'])
 def add_exam():
@@ -40,6 +50,30 @@ def add_exam():
     
     return render_template('add_exam.html', examForm = form)
 
+<<<<<<< HEAD
 @urls_blueprint.route('/add_questions', methods=['GET', 'POST'])
 def add_questions():
     form = QuestionForm 
+=======
+# Register user.
+@urls_blueprint.route('/register', methods=['GET', 'POST'])
+def register():
+    form = registerForm(request.form)
+
+    if request.method == 'POST' and form.validate():
+        username = form.username.data
+        email = form.email.data
+        password = sha256_crypt.encrypt(str(form.password.data))
+
+        # Creating user.
+        user = User(username = username, email = email, password = password)
+        
+        db.session.add(user)
+        db.session.commit()
+
+        flash('You are now registered and can log in', 'success')
+
+        return redirect(url_for('home'))
+    
+    return render_template('register.html', registerForm=form)
+>>>>>>> 1cdd236f37336709cee5a26c77f03619f2551da0
