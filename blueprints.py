@@ -1,15 +1,7 @@
 # coding: utf-8
 # Python imports.
-<<<<<<< HEAD
-from flask import Flask, Blueprint, render_template, request, flash
-=======
-<<<<<<< HEAD
-from flask import Flask, Blueprint, render_template, request, redirect
-=======
-from flask import Flask, Blueprint, render_template, request
->>>>>>> 08e95f69513213f09e1e09335c0bfc4805e68b94
+from flask import Flask, Blueprint, render_template, request, flash, redirect, url_for
 from passlib.hash import sha256_crypt
->>>>>>> 1cdd236f37336709cee5a26c77f03619f2551da0
 
 # Local imports.
 from forms import *
@@ -23,7 +15,7 @@ urls_blueprint = Blueprint("urls", __name__,)
 # Index.
 @urls_blueprint.route('/')
 def index():
-    return render_template('home.html') 
+    return render_template('index.html') 
 
 # Exams.
 @urls_blueprint.route('/exam')
@@ -54,11 +46,11 @@ def add_exam():
     
     return render_template('add_exam.html', examForm = form)
 
-<<<<<<< HEAD
+
 @urls_blueprint.route('/add_questions', methods=['GET', 'POST'])
 def add_questions():
     form = QuestionForm 
-=======
+
 # Register user.
 @urls_blueprint.route('/register', methods=['GET', 'POST'])
 def register():
@@ -77,7 +69,9 @@ def register():
 
         flash('You are now registered and can log in', 'success')
 
-        return redirect(url_for('home'))
+        return redirect('/')
     
     return render_template('register.html', registerForm=form)
->>>>>>> 1cdd236f37336709cee5a26c77f03619f2551da0
+
+# User login.
+
