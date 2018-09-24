@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block body %}
+  <h1>Add Questions</h1>
+  {% from "includes/_formhelpers.html" import render_field %}
+  <form class="add_question_form" method="POST" action="">
+
+    
+        <div class="form-group">
+            {{ render_field(addQuestionForm.question, class_="form-control") }}
+          </div>
+          <div class="form-group">
+            {{ render_field(addQuestionForm.answer_a, class_="form-control") }}
+          </div>
+          <div class="form-group">
+            {{ render_field(addQuestionForm.answer_b, class_="form-control") }}
+          </div>
+          <div class="form-group">
+            {{ render_field(addQuestionForm.answer_c, class_="form-control") }}
+          </div>
+          <div class="form-group">
+            {{ render_field(addQuestionForm.answer_d, class_="form-control") }}
+          </div>
+
+    <p><input class="btn btn-primary" type="submit" value="Next"></p>
+  </form>
+{% endblock %}

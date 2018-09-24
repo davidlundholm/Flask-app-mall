@@ -11,6 +11,14 @@ class examForm(Form):
     semester = StringField('Termin', [validators.Length(min=2, max=10)])
     questions = IntegerField('Antal Fragor', [validators.Required()])
 
+class addQuestionForm(Form):
+    question = StringField('Question description', [validators.Length(min=3, max=50)])
+    answer_a = StringField('Type Answer A')
+    answer_b = StringField('Type Answer B')
+    answer_c = StringField('Type Answer C')
+    answer_d = StringField('Type Answer D')
+    answer_e = StringField('Type Answer E')
+
 # Registerform.
 class registerForm(Form):
     username = StringField('Username', [validators.Length(min=4, max=20)])
