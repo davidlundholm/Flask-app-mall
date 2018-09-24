@@ -1,6 +1,6 @@
 # coding: utf-8
 # Python imports.
-from flask import Flask, Blueprint, render_template, request
+from flask import Flask, Blueprint, render_template, request, redirect
 
 # Local imports.
 from forms import examForm
@@ -36,7 +36,10 @@ def add_exam():
 
         ex = Exam(course_name = course_name, course_code = course_code, university = university, semester = semester)
         db.session.add(ex)
-        db.session.commit()
-        return render_template('home.html')
+        return redirect('/add_questions')
     
     return render_template('add_exam.html', examForm = form)
+
+@urls_blueprint.route('/add_questions', methods=['GET', 'POST'])
+def add_questions():
+    form = QuestionForm 
