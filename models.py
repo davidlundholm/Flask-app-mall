@@ -33,3 +33,9 @@ class Answer(db.Model):
     correct = db.Column(db.Boolean, default=False)
     question_id = db.Column(db.Integer, db.ForeignKey('question.id'))
 
+# User.
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(300), unique=True, nullable=False)
+    email = db.Column(db.String(300), unique=True, nullable=False)
+    password = db.Column(db.String(300), unique=True, nullable=False)
