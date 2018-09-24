@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 # Values.
 db = SQLAlchemy()
-db.create_all()
 
 # Models.
 # Exam.

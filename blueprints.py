@@ -1,7 +1,7 @@
 # coding: utf-8
 # Python imports.
-from flask import Flask, Blueprint, render_template, request, redirect, url_for, session
-
+from flask import Flask, flash, Blueprint, render_template, request, redirect, url_for, session
+from passlib.hash import sha256_crypt
 # Local imports.
 from forms import *
 from models import *
@@ -63,6 +63,6 @@ def register():
 
         flash('You are now registered and can log in', 'success')
 
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
     
     return render_template('register.html', registerForm=form)
