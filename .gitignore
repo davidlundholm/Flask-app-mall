@@ -256,3 +256,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+app_config.cfg
