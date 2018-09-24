@@ -1,6 +1,6 @@
 # coding: utf-8
 # Python imports.
-from flask import Flask, Blueprint, render_template, request
+from flask import Flask, Blueprint, render_template, request, flash
 from passlib.hash import sha256_crypt
 
 # Local imports.
