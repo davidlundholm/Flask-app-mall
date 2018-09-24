@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Python imports.
-from wtforms import Form, BooleanField, StringField, TextAreaField, PasswordField, validators, IntegerField
+from wtforms import Form, StringField, TextAreaField, PasswordField, validators, IntegerField
 
 # Forms.
 # Examform.
@@ -22,3 +22,4 @@ class registerForm(Form):
     confirm_password = PasswordField('Repeat Password')
     accept_tos = BooleanField('I accept the Terms of Service and Privacy Notice (updated Jan 22, 2015)', [validators.Required()])
     
+class examQuestions(Form)
