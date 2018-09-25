@@ -2,6 +2,7 @@
 Dependencies (pip installs p2)
 -----------------------------
 Flask - webframework
+flask-login
 SQLAlchemy 
 Flask-SQLAlchemy
 wtforms
