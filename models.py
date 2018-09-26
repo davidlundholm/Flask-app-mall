@@ -1,10 +1,10 @@
 # Python imports.
 from sqlalchemy import Integer, String, Column, Boolean
 from flask_sqlalchemy import SQLAlchemy
-#from flask_login import UserMixin
+from flask_login import UserMixin
 
 # Local imports.
-#from app import login_manager
+# from app import login_manager
 
 # Values.
 db = SQLAlchemy()
@@ -37,14 +37,12 @@ class Answer(db.Model):
     question_id = db.Column(db.Integer, db.ForeignKey('question.id'))
 
 # User.
-#class User(UserMixin, db.Model):
-#    id = db.Column(db.Integer, primary_key=True)
- #   username = db.Column(db.String(300), unique=True, nullable=False)
- #   email = db.Column(db.String(300), unique=True, nullable=False)
- #   password = db.Column(db.String(300), unique=True, nullable=False)
+class User(UserMixin, db.Model):
+   id = db.Column(db.Integer, primary_key=True)
+   username = db.Column(db.String(300), unique=True, nullable=False)
+   email = db.Column(db.String(300), unique=True, nullable=False)
+   password = db.Column(db.String(300), unique=True, nullable=False)
 
 # Login.
-#@login_manager.user_loader
-#def load_user(id):
-#    return User.query.get(int(id))
+
 

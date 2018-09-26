@@ -2,7 +2,7 @@
 # Python imports.
 from flask import Flask, flash, Blueprint, render_template, request, redirect, url_for, session
 from passlib.hash import bcrypt
-#from flask_login import LoginManager, current_user, login_user, logout_user
+from flask_login import LoginManager, current_user, login_user, logout_user
 
 # Local imports.
 from forms import *

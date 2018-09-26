@@ -1,7 +1,7 @@
 # coding: utf-8
 # Python imports.
 from flask import Flask, render_template, request
-#from flask_login import LoginManager
+from flask_login import LoginManager
 
 # Local imports.
 from models import db

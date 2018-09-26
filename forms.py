@@ -2,8 +2,7 @@
 # Python imports.
 from wtforms import Form, BooleanField, StringField, TextAreaField, PasswordField, validators, IntegerField
 
-# Local imports.
-from app import login
+
 
 # Forms.
 # Examform.
