@@ -14,7 +14,10 @@ class examForm(Form):
     questions = IntegerField('Antal Fragor', [validators.Required()])
 
 class addQuestionForm(Form):
-    question = StringField('Question description', [validators.Length(min=3, max=50)])
+
+
+
+    question = TextAreaField('Question description', [validators.Length(min=3, max=50)])
     answer_a = StringField('Type Answer A')
     answer_b = StringField('Type Answer B')
     answer_c = StringField('Type Answer C')

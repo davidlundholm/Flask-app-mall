@@ -38,7 +38,7 @@ def add_exam():
         course_code = form.course_code.data
         university = form.university.data
         semester = form.semester.data
-        session['questions'] = form.questions.data
+        #session['questions'] = form.questions.data
 
         ex = Exam(course_name = course_name, course_code = course_code, university = university, semester = semester)
         db.session.add(ex)
@@ -52,11 +52,12 @@ def add_exam():
 def add_questions():
     form = addQuestionForm(request.form)
     amountOfQuestions = session['questions'] 
+    print(amountOfQuestions)
     
 
     if request.method == 'POST' and form.validate():
         pass
-    return render_template('add_questions.html', addQuestionForm = form)
+    return render_template('add_questions.html', addQuestionForm = form, data = amountOfQuestions)
 
 # Register user.
 @urls_blueprint.route('/register', methods=['GET', 'POST'])
