@@ -1,20 +1,12 @@
 # -*- coding: utf-8 -*-
 # Python imports.
-from wtforms import Form, BooleanField, StringField, TextAreaField, PasswordField, validators, IntegerField
+from wtforms import Form, BooleanField, StringField, TextAreaField, PasswordField, validators, IntegerField, FieldList, FormField
 
 
 
 # Forms.
-# Examform.
-class examForm(Form):
-    course_name = StringField('Kursnamn', [validators.Length(min=2, max=50)])
-    course_code = StringField('Kurskod', [validators.Length(min=2, max=20)])
-    university = StringField('Universitet', [validators.Length(min=2, max=50)])
-    semester = StringField('Termin', [validators.Length(min=2, max=10)])
-    questions = IntegerField('Antal Fragor', [validators.Required()])
-
-class addQuestionForm(Form):
-
+# Exam Question Form
+class QuestionForm(Form):
 
 
     question = TextAreaField('Question description', [validators.Length(min=3, max=50)])
@@ -24,8 +16,19 @@ class addQuestionForm(Form):
     answer_d = StringField('Type Answer D')
     answer_e = StringField('Type Answer E')
 
+# Examform.
+class ExamForm(Form):
+    course_name = StringField('Kursnamn', [validators.Length(min=2, max=50)])
+    course_code = StringField('Kurskod', [validators.Length(min=2, max=20)])
+    university = StringField('Universitet', [validators.Length(min=2, max=50)])
+    semester = StringField('Termin', [validators.Length(min=2, max=10)])
+    questions = IntegerField('Antal Fragor', [validators.Required()])
+    
+
+
+
 # Registerform.
-class registerForm(Form):
+class RegisterForm(Form):
     username = StringField('Username', [validators.Length(min=4, max=20)])
     email = StringField('Email Address', [validators.Length(min=6, max=50)])
     password = PasswordField('New Password', [
