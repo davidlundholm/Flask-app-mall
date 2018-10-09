@@ -31,7 +31,7 @@ def add_to_database(_form):
     pass
 
 # Public functions.
-# Add exam.
+
 # Add exam.
 @urls_blueprint.route('/add_exam', methods=['GET','POST'])
 def add_exam():
@@ -51,7 +51,7 @@ def add_exam():
     
     return render_template('add_exam.html', ExamForm = form)
 
-
+# Add questions to your exams
 @urls_blueprint.route('/add_questions', methods=['GET', 'SET'])
 def add_questions():
     form = QuestionForm(request.form)
@@ -63,13 +63,14 @@ def add_questions():
         print(question_list[i].question.value)
 
     
-
+    # if shit gets validated the code below will run okay
     if request.method == 'POST' and validate_list(question_list):
         redirect(url_for('.home.html'))
         
         
     return render_template('add_questions.html', qlist = question_list)
 
+# check the questions so nothing is fucky
 def validate_list(question_list):
 
     for question in question_list:
@@ -78,7 +79,7 @@ def validate_list(question_list):
 # Register user.
 @urls_blueprint.route('/register', methods=['GET', 'POST'])
 def register():
-    form = registerForm(request.form)
+    form = RegisterForm(request.form)
 
     if request.method == 'POST' and form.validate():
         username = form.username.data
@@ -104,7 +105,7 @@ def login():
         flash("You're already logged in!")
         return redirect('/')
 
-    form = loginForm(request.form)
+    form = LoginForm(request.form)
     
     if request.method == 'POST' and form.validate():
         user = User.query.filter_by(username=form.username.data).first()
