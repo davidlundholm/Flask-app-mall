@@ -3,24 +3,24 @@
   <h1>Add Questions</h1>
   {% from "includes/_formhelpers.html" import render_field %}
   <form class="add_question_form" method="POST" action="">
-
-    
+      {% for q in qlist%}
+        <h2>Question {{ loop.index }}</h2>
         <div class="form-group">
-            {{ render_field(addQuestionForm.question, class_="form-control") }}
+            {{ render_field(q.question, class_="form-control") }}
           </div>
           <div class="form-group">
-            {{ render_field(addQuestionForm.answer_a, class_="form-control") }}
+            {{ render_field(q.answer_a, class_="form-control") }}
           </div>
           <div class="form-group">
-            {{ render_field(addQuestionForm.answer_b, class_="form-control") }}
+            {{ render_field(q.answer_b, class_="form-control") }}
           </div>
           <div class="form-group">
-            {{ render_field(addQuestionForm.answer_c, class_="form-control") }}
+            {{ render_field(q.answer_c, class_="form-control") }}
           </div>
           <div class="form-group">
-            {{ render_field(addQuestionForm.answer_d, class_="form-control") }}
+            {{ render_field(q.answer_d, class_="form-control") }}
           </div>
-
+          {% endfor %}
     <p><input class="btn btn-primary" type="submit" value="Next"></p>
   </form>
 {% endblock %}

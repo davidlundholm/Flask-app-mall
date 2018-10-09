@@ -8,6 +8,9 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
+# Setting up config.
+app.config.from_pyfile("app_config.cfg")
+
 # Database object.
 db = SQLAlchemy(app)
 
@@ -17,13 +20,10 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 # Local imports.
-from blueprints import urls_blueprint
+from app.blueprints import urls_blueprint
 
 # Registering blueprints.
 app.register_blueprint(urls_blueprint)
-
-# Setting up config.
-app.config.from_pyfile("app_config.cfg")
 
 # Database initializer.
 with app.app_context():
