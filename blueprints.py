@@ -52,6 +52,7 @@ def add_exam():
 def add_questions():
     form = QuestionForm(request.form)
     question_list = []
+    qs = session['questions']
     for i in range(session['questions']):
         question_list.append(form)
         question_list[i].question.value = ("Question: " + str(i + 1))
@@ -60,8 +61,10 @@ def add_questions():
     
 
     if request.method == 'POST' and validate_list(question_list):
-        pass
-    return render_template('add_questions.html', QuestionForm = form)
+        redirect(url_for('.home.html'))
+        
+        
+    return render_template('add_questions.html', qlist = question_list)
 
 def validate_list(question_list):
 

@@ -9,12 +9,12 @@ from wtforms import Form, BooleanField, StringField, TextAreaField, PasswordFiel
 class QuestionForm(Form):
 
 
-    question = TextAreaField('Question description', [validators.Length(min=3, max=50)])
-    answer_a = StringField('Type Answer A')
-    answer_b = StringField('Type Answer B')
-    answer_c = StringField('Type Answer C')
-    answer_d = StringField('Type Answer D')
-    answer_e = StringField('Type Answer E')
+    question = TextAreaField('', [validators.Length(min=3, max=50)], render_kw={"placeholder": "Question description"})
+    answer_a = StringField('',[validators.Length(min=3, max=50)], render_kw={"placeholder": "A"})
+    answer_b = StringField('',[validators.Length(min=3, max=50)], render_kw={"placeholder": "A"})
+    answer_c = StringField('',[validators.Length(min=3, max=50)], render_kw={"placeholder": "A"})
+    answer_d = StringField('',[validators.Length(min=3, max=50)], render_kw={"placeholder": "A"})
+    answer_e = StringField('',[validators.Length(min=3, max=50)], render_kw={"placeholder": "A"})
 
 # Examform.
 class ExamForm(Form):
