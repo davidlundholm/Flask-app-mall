@@ -9,6 +9,10 @@ wtforms
 mysql-python
 passlib - password encryption
 
+OS Dependencies
+-----------------------------
+sudo apt-get install python3-mysqldb
+
 Enviroment
 -----------------------------
 virtualenv venv

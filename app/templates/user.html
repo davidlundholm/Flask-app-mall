@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h1>User: {{ user.username }}</h1>
+    <hr>
+    {% for exam in exams %}
+    <p><a>
+    {{ exam.date }}  <b>{{ exam.body }}</b>
+    </p></a>
+    {% endfor %}
+{% endblock %}

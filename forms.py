@@ -2,13 +2,9 @@
 # Python imports.
 from wtforms import Form, BooleanField, StringField, TextAreaField, PasswordField, validators, IntegerField, FieldList, FormField
 
-
-
 # Forms.
 # Exam Question Form
 class QuestionForm(Form):
-
-
     question = TextAreaField('', [validators.Length(min=3, max=50)], render_kw={"placeholder": "Question description"})
     answer_a = StringField('',[validators.Length(min=3, max=50)], render_kw={"placeholder": "A"})
     answer_b = StringField('',[validators.Length(min=3, max=50)], render_kw={"placeholder": "A"})
@@ -23,9 +19,6 @@ class ExamForm(Form):
     university = StringField('Universitet', [validators.Length(min=2, max=50)])
     semester = StringField('Termin', [validators.Length(min=2, max=10)])
     questions = IntegerField('Antal Fragor', [validators.Required()])
-    
-
-
 
 # Registerform.
 class RegisterForm(Form):
@@ -43,3 +36,13 @@ class LoginForm(Form):
     username = StringField('Username', [validators.Length(min=4, max=20)])
     password = PasswordField('New Password', [validators.Length(min=4, max=50)])
     remember_me = BooleanField('Remember me?', [validators.Required()])
+
+# Settingsform.
+class SettingsForm(Form):
+    email = StringField('Email Address', [validators.Length(min=5, max=50)])
+    password = PasswordField('New Password', [
+        validators.Required(),
+        validators.EqualTo('confirm_password', message='Password must match!')
+    ])
+    confirm_password = PasswordField('Repeat Password')
+    password = PasswordField('Old password', [validators.Length(min=4, max=50)])

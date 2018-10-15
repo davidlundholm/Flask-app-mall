@@ -18,10 +18,44 @@ urls_blueprint = Blueprint("urls", __name__,)
 def index():
     return render_template('home.html')
 
+# User page.
+@urls_blueprint.route('/user/<username>')
+@login_required
+def user(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    exams = [
+        {'date':'05/07/2018', 'body': 'Retorik ht-16'},
+        {'date': '06/07/2018', 'body': 'Psykologi vt-17'}
+    ]
+    return render_template('user.html', user=user, exams=exams)
+
+# Settings.
+@urls_blueprint.route('/settings')
+@login_required
+def user():
+    form = SettingsForm()
+    if request.method == 'POST' and form.validate():
+    return render_template('settings.html', form=form)
+
 # Exams.
-@urls_blueprint.route('/exam')
+@urls_blueprint.route('/exam/<int:id>', methods=['GET', 'POST'])
+@login_required
 def exam():
-    return render_template('home.html')
+    exam = Exam.query.get_or_404(id)
+    commentform = CommentForm()
+    if form.validate_on_submit():
+        # Comment.
+        comment = Comment(body = form.body.data, exam=exam)
+        db.session.add(comment)
+        return redirect(url_for('.exam', id=exam.id, page=-1))
+    page = request.args.get('page', 1, type=int)
+    
+    if page == -1:
+        page = (exam.comments.count() - 1)
+        current_app.config['FLASKY_COMMENTS_PER_PAGE'] + 1
+    pagination = post.comments.order_by(Comment.timestamp.asc()).paginate(page, per_page=current_app.config['FLASKY_COMMENTS_PER_PAGE'], error_out=False)
+    comments = pagination.items
+    return render_template('exam.html', posts=[post], form=commentform, comments=comments, pagination=pagination)
 
 # Functions.
 # Private functions.
@@ -31,7 +65,6 @@ def add_to_database(_form):
     pass
 
 # Public functions.
-
 # Add exam.
 @urls_blueprint.route('/add_exam', methods=['GET','POST'])
 def add_exam():
